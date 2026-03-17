@@ -6,10 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GGR472 Lab 4</title>
-    <!-- mapbox API -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css' rel='stylesheet' />
-    <!-- CSS -->
+    <!-- Mapbox GL JS script enabling map interactivity and customization-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.js'></script>
+    <!-- Mapbox GL CSS script enabling map styles -->
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.css'/>
+    <!-- Mapbox geocoder plugin -->
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.css"
+        type="text/css">
+    <!-- Bootstrap CSS stylesheet link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <!-- Custom CSS stylesheet for webpage display -->
     <link rel="stylesheet" href="style.css">
     <!-- Turf.js -->
     <script src='https://unpkg.com/@turf/turf@7.2.0/turf.min.js'></script>
@@ -17,10 +26,52 @@
 
 <body>
 
-    <!-- MAP CONTAINER -->
-    <div id='map' class='map'></div>
+    <!-- Container for heading section using bootstrap to display the title and subtitle -->
+    <div class="map-header text-center p-3 mb-2 bg-light">
+        <h1 class="h1 mb-1">Fatal and Near-Fatal Motor Vehicle Collisions in Toronto</h1>
+        <p class ="h3 mb-0">Between the Years 2006 - 2021</p>
+    </div>
+
+    <!-- Map container -->
+    <div id="my-map" class="map-container"></div>
+
+    <!-- Navigation elements -- Based on week 8 demo 2-->
+     <div class='map-search-container'>
+        <label class="option-label" for="geocoder">Search for location</label>
+        <div id="geocoder" class="geocoder"></div>
+        <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
+    </div>
+
+    <!-- Legend -->
+    <div id="legend" class="legend">
+        <h3>Collision Counts</h3>
+        <!-- Legend contents (collision counts) added in JS -->
+    </div>
+
+     <!-- Interactivity -- Based on week 8 demo 2 -->
+    <div class="map-data-container">
+        <label class="option-label" for="layercheck">Filter Map Layers</label>
+
+        <!-- Checkbox to show/hide layers -->
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="pointscheck" checked>
+            <label class="form-check-label" for="pointscheck">Show collision points</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="hexcheck" checked>
+            <label class="form-check-label" for="hexcheck">Show hexgrid</label>
+        </div>
+
+         <!-- Checkbox to show/hide legend -->
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="legendcheck" checked>
+            <label class="form-check-label" for="legendcheck">Show legend</label>
+        </div>
+    </div>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
