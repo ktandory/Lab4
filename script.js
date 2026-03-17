@@ -80,7 +80,7 @@ fetch('https://raw.githubusercontent.com/ktandory/Lab4/refs/heads/main/data/pedc
                         10, '#cc3f14', //Red-Orange indicating moderately-high collision count
                         25,'#ff0000' // Red indicating high collision count
                     ],
-                    'fill-opacity': 0.5
+                    'fill-opacity': 0.4
                 },
                 filter: ['!=', 'COUNT', 0] //Ensures only hexagons with at least one collision are displayed
             });
@@ -167,16 +167,21 @@ legendcheck.addEventListener('click', () => {
 
 //Change collision point layer display (show/hide) based on checkbox using setLayoutProperty method
 document.getElementById('pointscheck').addEventListener('change', (e) => {
-    map.setLayoutProperty(
-        'collision-points',
-        'visibility',
-        e.target.checked ? 'visible' : 'none'
-    );
+    if (e.target.checked) {
+        map.setLayoutProperty('collision-points', 'visibility', 'visible');
+    } else {
+        map.setLayoutProperty('collision-points', 'visibility', 'none');
+    }
 });
 
 //Change hexagrid layer display (show/hide) based on checkbox using setLayoutProperty method
 document.getElementById('hexcheck').addEventListener('change', (e) => {
-    let visibility = e.target.checked ? 'visible' : 'none';
+    let visibility;
+    if (e.target.checked) {
+        visibility = 'visible';
+    } else {
+        visibility = 'none';
+    }
     map.setLayoutProperty('collishexfill', 'visibility', visibility);
     map.setLayoutProperty('collishexoutline', 'visibility', visibility);
 });
