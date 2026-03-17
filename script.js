@@ -101,6 +101,26 @@ fetch('https://raw.githubusercontent.com/ktandory/Lab4/refs/heads/main/data/pedc
                     .setHTML("<b>Collision count:</b> " + e.features[0].properties.COUNT)
                     .addTo(map);
             });
+                        //Change collision point layer display (show/hide) based on checkbox using setLayoutProperty method
+            document.getElementById('pointscheck').addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    map.setLayoutProperty('collision-points', 'visibility', 'visible');
+                } else {
+                    map.setLayoutProperty('collision-points', 'visibility', 'none');
+                }
+            });
+
+            //Change hexagrid layer display (show/hide) based on checkbox using setLayoutProperty method
+            document.getElementById('hexcheck').addEventListener('change', (e) => {
+                let visibility;
+                if (e.target.checked) {
+                    visibility = 'visible';
+                } else {
+                    visibility = 'none';
+                }
+                map.setLayoutProperty('collishexfill', 'visibility', visibility);
+                map.setLayoutProperty('collishexoutline', 'visibility', visibility);
+            });
         });
     })
 /*--------------------------------------------------------------------
@@ -163,25 +183,4 @@ legendcheck.addEventListener('click', () => {
         legend.style.display = "none";
         legendcheck.checked = false;
     }
-});
-
-//Change collision point layer display (show/hide) based on checkbox using setLayoutProperty method
-document.getElementById('pointscheck').addEventListener('change', (e) => {
-    if (e.target.checked) {
-        map.setLayoutProperty('collision-points', 'visibility', 'visible');
-    } else {
-        map.setLayoutProperty('collision-points', 'visibility', 'none');
-    }
-});
-
-//Change hexagrid layer display (show/hide) based on checkbox using setLayoutProperty method
-document.getElementById('hexcheck').addEventListener('change', (e) => {
-    let visibility;
-    if (e.target.checked) {
-        visibility = 'visible';
-    } else {
-        visibility = 'none';
-    }
-    map.setLayoutProperty('collishexfill', 'visibility', visibility);
-    map.setLayoutProperty('collishexoutline', 'visibility', visibility);
 });
