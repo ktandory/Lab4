@@ -11,8 +11,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoia3RhbmRvcnkiLCJhIjoiY21rYmZhc2dqMDNqNzNlcHkwM
 // Initialize map and edit to your preference
 const map = new mapboxgl.Map({
     container: 'map', // container id in HTML
-    style: '',  // ****ADD MAP STYLE HERE *****
-    center: [-79.39, 43.65],  // starting point, longitude/latitude
+    style: 'mapbox://styles/ktandory/cmmurzren001901s96dy52c61',  // ****ADD MAP STYLE HERE *****
+    center: [-79.343, 43.721],  // starting point, longitude/latitude
     zoom: 11 // starting zoom level
 });
 
