@@ -13,7 +13,7 @@ const map = new mapboxgl.Map({
     container: 'my-map', //Container id in HTML
     style: 'mapbox://styles/ktandory/cmmurs2ae004x01rx8zujb0kp',
     center: [-79.343, 43.721],  //Starting point, longitude/latitude
-    zoom: 11 //Starting zoom level
+    zoom: 10.5 //Starting zoom level
 });
 
 /*--------------------------------------------------------------------
